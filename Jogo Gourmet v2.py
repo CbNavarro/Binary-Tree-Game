@@ -152,15 +152,29 @@ def set_new_product_massa(product, category):
     noProd = No(product)
     noCat = No(category)
 
-    noMassaAtual = noCat
-    noCat.set_right(noMassaAnt)
-    noCat.set_left(noProd)
-    noMassaAnt = noMassaAtual
+    if noMassaAnt == noMassaAtual:
 
-    window5.hide()
-    window4['food']('')
-    window5['category']('')
-    window1.un_hide()
+        noMassaAtual = noCat
+        noCat.set_right(noMassaAnt)
+        noCat.set_left(noProd)
+        noMassaAnt = noMassaAtual
+
+        window5.hide()
+        window4['food']('')
+        window5['category']('')
+        window1.un_hide()
+
+    else:
+        noMassaAnt.set_left(noCat)
+        noCat.set_right(noMassaAtual)
+        noCat.set_left(noProd)
+        noMassaAtual = noMassaAnt
+        
+        window5.hide()
+        window4['food']('')
+        window5['category']('')
+        window1.un_hide()
+
 
 def set_new_product_outro(product, category):
 
@@ -170,16 +184,29 @@ def set_new_product_outro(product, category):
     noProd = No(product)
     noCat = No(category)
 
-    noOutroAtual = noCat
-    noCat.set_right(noOutroAnt)
-    noCat.set_left(noProd)
+    if noOutroAnt == noOutroAtual:
 
-    noOutroAnt = noOutroAtual
+        noOutroAtual = noCat
+        noCat.set_right(noOutroAnt)
+        noCat.set_left(noProd)
 
-    window5.hide()
-    window4['food']('')
-    window5['category']('')
-    window1.un_hide()
+        noOutroAnt = noOutroAtual
+
+        window5.hide()
+        window4['food']('')
+        window5['category']('')
+        window1.un_hide()
+
+    else:
+        noOutroAnt.set_left(noCat)
+        noCat.set_right(noOutroAtual)
+        noCat.set_left(noProd)
+        noOutroAtual = noOutroAnt
+        
+        window5.hide()
+        window4['food']('')
+        window5['category']('')
+        window1.un_hide()
 
 
 while True:
