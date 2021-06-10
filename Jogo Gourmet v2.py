@@ -1,30 +1,30 @@
 import PySimpleGUI as sg
-sg.theme('DarkTanBlue')
+sg.theme('DarkBlue3')
 
 def main_window():
     layout = [
-        [sg.Text('Pense em um prato que gosta')],
+        [sg.Text('Pense em um prato que gosta…')],
         [sg.Button('Ok',)],
     ]
     return sg.Window('Jogo Gourmet', layout=layout, finalize=True, size=(300,100), element_justification='c')
 
 def decision_window():
     layout = [
-        [sg.Text('O prato que voce pensou e massa?', size=(50,1))],
-        [sg.Button('Sim',), sg.Button('Nao',)],
+        [sg.Text('O prato que você pensou é massa?', size=(50,1))],
+        [sg.Button('Sim',), sg.Button('Não',)],
     ]
     return sg.Window('Jogo Gourmet', layout=layout, finalize=True, size=(300,100), element_justification='c')
 
 def questions_window():
     layout = [
-        [sg.Text('O prato que voce pensou e massa?', key='texts', size=(50,1))],
-        [sg.Button('Sim'), sg.Button('Nao')],
+        [sg.Text('O prato que você pensou é massa?', key='texts', size=(50,1))],
+        [sg.Button('Sim'), sg.Button('Não')],
     ]
     return sg.Window('Jogo Gourmet', layout=layout, finalize=True, size=(300,100), element_justification='c')
 
 def answer1_window():
     layout = [
-        [sg.Text('Qual prato voce pensou ??')],
+        [sg.Text('Qual prato você pensou ??')],
         [sg.Input(size=(15,0), key='food')],
         [sg.Button('Ok',), sg.Button('Cancelar')],
     ]
@@ -105,7 +105,7 @@ def decision1():
             window3.hide()
             window6.un_hide()
         
-    elif window == window3 and event == 'Nao':
+    elif window == window3 and event == 'Não':
 
         if noMassaAtual.get_right():
             noMassaAtual = noMassaAtual.get_right()
@@ -115,7 +115,7 @@ def decision1():
             window3.hide()
             window4.un_hide()
         
-    window3["texts"].update(value='O prato que voce pensou e {}? '.format(noMassaAtual.get_value()))
+    window3["texts"].update(value='O prato que você pensou é {}? '.format(noMassaAtual.get_value()))
 
 def decision2():
 
@@ -134,7 +134,7 @@ def decision2():
             window3.hide()
             window6.un_hide()
 
-    elif window == window3 and event == 'Nao':
+    elif window == window3 and event == 'Não':
 
         if noOutroAtual.get_right():
             noOutroAtual = noOutroAtual.get_right()
@@ -143,7 +143,7 @@ def decision2():
             window3.hide()
             window4.un_hide()
 
-    window3["texts"].update(value='O prato que voce pensou e {}? '.format(noOutroAtual.get_value()))
+    window3["texts"].update(value='O prato que você pensou é {}? '.format(noOutroAtual.get_value()))
 
 def set_new_product_massa(product, category):
     global noMassaAnt
@@ -204,7 +204,7 @@ while True:
         window2.hide()
         window3.un_hide()
         decision1()
-    elif window == window2 and event == 'Nao':
+    elif window == window2 and event == 'Não':
         window2.hide()
         window3.un_hide()
         decision2()
@@ -215,7 +215,7 @@ while True:
             decision1()
         elif decision == 2:
             decision2()
-    elif window == window3 and event == 'Nao':
+    elif window == window3 and event == 'Não':
         window3.un_hide()
         if decision == 1:
             decision1()
@@ -225,13 +225,13 @@ while True:
     if window == window4 and event == 'Ok':
         product = window4['food'].get()
         if not product:
-            sg.popup("Campo Vazio", 'Conta ai em qual prato voce pensou :)')
+            sg.popup("Campo Vazio", 'Conta aí em qual prato você pensou :)')
         else:
             window4.hide()
             if decision == 1:
-                window5["titleWindow5"].update(value='{} e _____ mas {} nao.'.format(product, noMassaAtual.get_value()))
+                window5["titleWindow5"].update(value='{} é _____ mas {} Não.'.format(product, noMassaAtual.get_value()))
             elif decision == 2:
-                window5["titleWindow5"].update(value='{} e _____ mas {} nao.'.format(product, noOutroAtual.get_value()))
+                window5["titleWindow5"].update(value='{} é _____ mas {} Não.'.format(product, noOutroAtual.get_value()))
 
             window5.un_hide()
 
