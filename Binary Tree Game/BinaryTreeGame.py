@@ -15,6 +15,7 @@ root_node = Node('massa',Node('bolo de chocolate'),Node('lasanha'))
 current_node = root_node
 
 def create_node(new_food_type, new_food_plate):
+    
     global current_node
     left_value = current_node.value
 
